@@ -1,0 +1,5 @@
+/* Importar estilos principales en orden de importancia */
+@import './styles/reset.css';
+@import './styles/main.css';
+@import './styles/dark-mode.css';
+@import './styles/modal.css';
