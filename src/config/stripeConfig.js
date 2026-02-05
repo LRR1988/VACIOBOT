@@ -1,0 +1,19 @@
+// Archivo de configuración predeterminada de Stripe para Travabus
+// Este archivo establece la clave pública de Stripe si no está ya configurada
+
+// Clave pública de Stripe
+const DEFAULT_STRIPE_PUBLISHABLE_KEY = 'pk_test_51S95M9I567TRM2KW04qCZLh6w65hzKvL6GOdjqjSh3a946sX50PMvNkJC29fms6p1ZUk2zoT7T0zSwFdyyjnjNah00X6iMaecC';
+
+// Verificar si la clave ya está configurada
+const currentKey = localStorage.getItem('stripe_publishable_key');
+
+if (!currentKey) {
+  // Si no hay clave configurada, establecer la clave predeterminada
+  localStorage.setItem('stripe_publishable_key', DEFAULT_STRIPE_PUBLISHABLE_KEY);
+  console.log('🔐 Clave pública de Stripe configurada automáticamente');
+} else {
+  console.log('🔐 Clave pública de Stripe ya estaba configurada');
+}
+
+// Exportar la clave para su uso si es necesario
+export { DEFAULT_STRIPE_PUBLISHABLE_KEY };

@@ -1,0 +1,180 @@
+/* Modo oscuro para la aplicación Travabus */
+
+.dark-mode {
+  --dm-bg-primary: #121212;
+  --dm-bg-secondary: #1e1e1e;
+  --dm-bg-tertiary: #2d2d2d;
+  --dm-text-primary: #e0e0e0;
+  --dm-text-secondary: #b0b0b0;
+  --dm-border: #444444;
+  --dm-card-bg: #1e1e1e;
+  --dm-input-bg: #2d2d2d;
+  --dm-input-border: #444444;
+  --dm-input-focus: #64b5f6;
+  --dm-btn-bg: #3a3a3a;
+  --dm-btn-hover: #4a4a4a;
+  --dm-alert-error-bg: #2d1b1b;
+  --dm-alert-error-text: #f5b7b1;
+  --dm-alert-success-bg: #1b2d1b;
+  --dm-alert-success-text: #82e0aa;
+  --dm-modal-bg: #1e1e1e;
+  --dm-modal-border: #444444;
+}
+
+.dark-mode body {
+  background-color: var(--dm-bg-primary);
+  color: var(--dm-text-primary);
+}
+
+.dark-mode .header {
+  background-color: var(--dm-bg-secondary);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-border);
+}
+
+.dark-mode .card {
+  background-color: var(--dm-card-bg);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-border);
+}
+
+.dark-mode .card-header {
+  background: linear-gradient(135deg, var(--dm-bg-tertiary), var(--dm-card-bg));
+  color: var(--dm-text-primary);
+  border-bottom-color: var(--dm-border);
+}
+
+.dark-mode .form-input {
+  background-color: var(--dm-input-bg);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-input-border);
+}
+
+.dark-mode .form-input:focus {
+  border-color: var(--dm-input-focus);
+  box-shadow: 0 0 0 0.2rem rgba(100, 181, 246, 0.25);
+}
+
+.dark-mode .form-select {
+  background-color: var(--dm-input-bg);
+  color: var(--dm-text-primary);
+  border-color: var(--dm-input-border);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23b0b0b0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+}
+
+.dark-mode .nav-link {
+  color: var(--dm-text-secondary);
+}
+
+.dark-mode .nav-link:hover {
+  color: #64b5f6;
+  background-color: var(--dm-bg-tertiary);
+}
+
+.dark-mode .btn-outline {
+  color: #64b5f6;
+  border-color: #64b5f6;
+}
+
+.dark-mode .btn-outline:hover {
+  background-color: #64b5f6;
+  color: var(--dm-bg-primary);
+}
+
+.dark-mode .btn-primary {
+  background-color: #2196f3;
+  border-color: #2196f3;
+}
+
+.dark-mode .btn-primary:hover {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+.dark-mode .status.active {
+  background-color: #4caf50;
+}
+
+.dark-mode .status.inactive {
+  background-color: #757575;
+}
+
+.dark-mode .status.blocked {
+  background-color: #f44336;
+}
+
+.dark-mode .alert {
+  border-color: var(--dm-border);
+}
+
+.dark-mode .alert-error {
+  background-color: var(--dm-alert-error-bg);
+  color: var(--dm-alert-error-text);
+}
+
+.dark-mode .alert-success {
+  background-color: var(--dm-alert-success-bg);
+  color: var(--dm-alert-success-text);
+}
+
+.dark-mode .alert-info {
+  background-color: #1a3d4a;
+  border-color: #2a6a8f;
+  color: #6bb8ff;
+}
+
+.dark-mode .tabs {
+  border-bottom-color: var(--dm-border);
+}
+
+.dark-mode .tab-btn {
+  color: var(--dm-text-secondary);
+}
+
+.dark-mode .tab-btn.active {
+  color: #64b5f6;
+}
+
+.dark-mode .tab-btn:hover {
+  color: #64b5f6;
+  background-color: rgba(100, 181, 246, 0.1);
+}
+
+.dark-mode .footer {
+  background-color: #1a237e;
+  color: var(--dm-text-secondary);
+  border-top-color: var(--dm-border);
+}
+
+.dark-mode .modal-content {
+  background-color: var(--dm-modal-bg);
+  color: var(--dm-text-primary);
+  border: 1px solid var(--dm-modal-border);
+}
+
+.dark-mode .modal-header {
+  border-color: var(--dm-border);
+}
+
+.dark-mode .modal-footer {
+  border-color: var(--dm-border);
+}
+
+/* Estilos responsivos para modo oscuro en móviles */
+@media (max-width: 768px) {
+  .dark-mode .nav-link {
+    background-color: transparent;
+  }
+  
+  .dark-mode .nav-link:hover {
+    background-color: rgba(100, 181, 246, 0.15);
+  }
+  
+  .dark-mode .card {
+    border-radius: var(--border-radius);
+  }
+  
+  .dark-mode .form-input, .dark-mode .form-select {
+    background-color: var(--dm-input-bg);
+  }
+}

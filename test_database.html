@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Base de Datos - Travabus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-success {
+            background-color: #28a745;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prueba de Base de Datos - Travabus</h1>
+        <p>Esta página permite probar todas las funcionalidades de la base de datos local.</p>
+        
+        <div class="test-section">
+            <h3>1. Crear Datos de Prueba</h3>
+            <button id="createTestDataBtn" class="btn">Crear Usuarios y Anuncios de Prueba</button>
+            <div id="createTestDataResult" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. Consultar Datos</h3>
+            <button id="getAllUsersBtn" class="btn">Obtener Todos los Usuarios</button>
+            <button id="getAllAdsBtn" class="btn">Obtener Todos los Anuncios</button>
+            <button id="getActiveAdsBtn" class="btn">Obtener Anuncios Activos</button>
+            <div id="queryResults" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. Operaciones CRUD</h3>
+            <div>
+                <input type="text" id="userIdInput" placeholder="ID de Usuario" style="width: 200px;">
+                <input type="text" id="adIdInput" placeholder="ID de Anuncio" style="width: 200px;">
+                <button id="getUserByIdBtn" class="btn btn-success">Buscar Usuario por ID</button>
+                <button id="getAdByIdBtn" class="btn btn-success">Buscar Anuncio por ID</button>
+            </div>
+            <div id="crudResults" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>4. Pruebas de Administrador</h3>
+            <div>
+                <input type="text" id="adIdToUpdate" placeholder="ID de Anuncio a Actualizar" style="width: 200px;">
+                <input type="text" id="fieldToUpdate" placeholder="Campo (ej: price)" style="width: 150px;">
+                <input type="text" id="newValue" placeholder="Nuevo Valor" style="width: 150px;">
+                <button id="updateAdBtn" class="btn btn-warning">Actualizar Anuncio</button>
+            </div>
+            <div>
+                <input type="text" id="userIdToBlock" placeholder="ID de Usuario a Cambiar Rol" style="width: 200px;">
+                <input type="text" id="newRole" placeholder="Nuevo Rol (user/admin)" style="width: 150px;">
+                <button id="updateUserRoleBtn" class="btn btn-warning">Actualizar Rol de Usuario</button>
+            </div>
+            <div id="adminResults" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>5. Limpieza</h3>
+            <button id="clearAllDataBtn" class="btn btn-danger">Limpiar TODOS los Datos (Cuidado!)</button>
+            <div id="clearResults" class="result"></div>
+        </div>
+    </div>
+
+    <!-- Incluir el código de la base de datos -->
+    <script>
+        // Simulación de la base de datos usando localStorage
+        class Database {
+          constructor() {
+            this.tables = ['users', 'ads', 'ad_followers', 'ad_interests', 'notifications', 'transactions'];
+            this.init();
+          }
+
+          init() {
+            // Inicializar las tablas si no existen
+            for (const table of this.tables) {
+              if (!localStorage.getItem(table)) {
+                localStorage.setItem(table, JSON.stringify([]));
+              }
+            }
+          }
+
+          // Obtener todos los registros de una tabla
+          getAll(table) {
+            try {
+              const data = localStorage.getItem(table);
+              return data ? JSON.parse(data) : [];
+            } catch (e) {
+              console.error(`Error getting all from ${table}:`, e);
+              return [];
+            }
+          }
+
+          // Buscar un registro por ID
+          findById(table, id) {
+            const records = this.getAll(table);
+            return records.find(record => record.id === id);
+          }
+
+          // Insertar un nuevo registro
+          insert(table, data) {
+            try {
+              const records = this.getAll(table);
+              const id = `id_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+              const newRecord = { ...data, id };
+              records.push(newRecord);
+              localStorage.setItem(table, JSON.stringify(records));
+              return newRecord;
+            } catch (e) {
+              console.error(`Error inserting into ${table}:`, e);
+              return null;
+            }
+          }
+
+          // Actualizar un registro
+          update(table, id, data) {
+            try {
+              const records = this.getAll(table);
+              const index = records.findIndex(record => record.id === id);
+              if (index !== -1) {
+                records[index] = { ...records[index], ...data, updated_at: new Date().toISOString() };
+                localStorage.setItem(table, JSON.stringify(records));
+                return records[index];
+              }
+              return null;
+            } catch (e) {
+              console.error(`Error updating ${table}:`, e);
+              return null;
+            }
+          }
+
+          // Eliminar un registro
+          remove(table, id) {
+            try {
+              const records = this.getAll(table);
+              const filteredRecords = records.filter(record => record.id !== id);
+              localStorage.setItem(table, JSON.stringify(filteredRecords));
+              return true;
+            } catch (e) {
+              console.error(`Error removing from ${table}:`, e);
+              return false;
+            }
+          }
+
+          // Métodos específicos para cada entidad
+          createUser(userData) {
+            return this.insert('users', userData);
+          }
+
+          createAd(adData) {
+            return this.insert('ads', adData);
+          }
+
+          createAdFollower(followerData) {
+            return this.insert('ad_followers', followerData);
+          }
+
+          createAdInterest(interestData) {
+            return this.insert('ad_interests', interestData);
+          }
+
+          updateUser(id, data) {
+            return this.update('users', id, data);
+          }
+
+          updateAd(id, data) {
+            return this.update('ads', id, data);
+          }
+
+          deleteUser(id) {
+            // También eliminar anuncios asociados
+            const userAds = this.getAll('ads').filter(ad => ad.user_id === id);
+            for (const ad of userAds) {
+              this.deleteAd(ad.id);
+            }
+            return this.remove('users', id);
+          }
+
+          deleteAd(id) {
+            // Eliminar relaciones asociadas
+            const followers = this.getAll('ad_followers').filter(f => f.ad_id === id);
+            for (const follower of followers) {
+              this.remove('ad_followers', follower.id);
+            }
+            
+            const interests = this.getAll('ad_interests').filter(i => i.ad_id === id);
+            for (const interest of interests) {
+              this.remove('ad_interests', interest.id);
+            }
+            
+            return this.remove('ads', id);
+          }
+
+          getUserById(id) {
+            return this.findById('users', id);
+          }
+
+          getAdById(id) {
+            return this.findById('ads', id);
+          }
+
+          getAdsByUserId(userId) {
+            return this.getAll('ads').filter(ad => ad.user_id === userId);
+          }
+
+          getUsers() {
+            return this.getAll('users');
+          }
+
+          getAds() {
+            return this.getAll('ads');
+          }
+
+          getActiveAds() {
+            return this.getAll('ads').filter(ad => ad.status === 'active');
+          }
+
+          clearAllData() {
+            for (const table of this.tables) {
+              localStorage.setItem(table, JSON.stringify([]));
+            }
+          }
+        }
+
+        // Crear instancia de la base de datos
+        const db = new Database();
+
+        // Función para mostrar resultados
+        function displayResult(elementId, message, isError = false) {
+          const element = document.getElementById(elementId);
+          element.textContent = message;
+          element.className = `result ${isError ? 'error' : 'success'}`;
+        }
+
+        // Event listeners para los botones
+        document.getElementById('createTestDataBtn').addEventListener('click', function() {
+          try {
+            // Crear usuarios de prueba
+            const user1 = db.createUser({
+              username: "bus_company_1",
+              password: "hashed_password_1",
+              role: "user",
+              company_name: "Empresa de Autobuses Norte SL",
+              tax_data: "CIF: B12345678",
+              bank_account: "ES12 1234 5678 9012 3456 7890",
+              bic_swift: "BCOEESMMXXX",
+              company_id: "B12345678",
+              email: "contacto@busnorte.es",
+              phone: "+34 942 123 456",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            const user2 = db.createUser({
+              username: "transport_service",
+              password: "hashed_password_2",
+              role: "user",
+              company_name: "Servicios de Transporte Sur SA",
+              tax_data: "CIF: A98765432",
+              bank_account: "ES34 9876 5432 1098 7654 3210",
+              bic_swift: "CAIXESBBXXX",
+              company_id: "A98765432",
+              email: "info@transportsur.es",
+              phone: "+34 91 987 6563",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            // Crear usuario administrador
+            const adminUser = db.createUser({
+              username: "admin_user",
+              password: "hashed_admin_password",
+              role: "admin",
+              company_name: "Administrador Travabus",
+              tax_data: "CIF: W00000000",
+              bank_account: "ES00 0000 0000 0000 0000 0000",
+              bic_swift: "ADMIESMMXXX",
+              company_id: "W00000000",
+              email: "admin@travabus.com",
+              phone: "+34 91 123 4567",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            // Crear anuncios de prueba para el primer usuario
+            const ad1 = db.createAd({
+              user_id: user1.id,
+              ad_type: "offer",
+              route_from: "Madrid",
+              route_to: "Barcelona",
+              start_date: "2026-03-15",
+              end_date: "2026-03-15",
+              start_time: "08:00",
+              end_time: "14:00",
+              price: 1200.00,
+              expenses_by: "receiver",
+              bus_count: 1,
+              bus_age: 2,
+              seats: 50,
+              observations: "Autobús nuevo con aire acondicionado y WiFi gratuito",
+              circuit: false,
+              status: "active",
+              featured: false,
+              country: "ES",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            const ad2 = db.createAd({
+              user_id: user1.id,
+              ad_type: "offer",
+              route_from: "Valencia",
+              route_to: "Sevilla",
+              start_date: "2026-03-20",
+              end_date: "2026-03-20",
+              start_time: "07:30",
+              end_time: "16:30",
+              price: 950.00,
+              expenses_by: "shared",
+              bus_count: 1,
+              bus_age: 5,
+              seats: 45,
+              observations: "Ruta directa sin paradas intermedias",
+              circuit: false,
+              status: "active",
+              featured: false,
+              country: "ES",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            // Crear anuncios de prueba para el segundo usuario
+            const ad3 = db.createAd({
+              user_id: user2.id,
+              ad_type: "offer",
+              route_from: "Lyon",
+              route_to: "Marsella",
+              start_date: "2026-03-18",
+              end_date: "2026-03-18",
+              start_time: "09:00",
+              end_time: "13:00",
+              price: 650.00,
+              expenses_by: "sender",
+              bus_count: 1,
+              bus_age: 3,
+              seats: 55,
+              observations: "Transporte de calidad con asientos reclinables",
+              circuit: false,
+              status: "active",
+              featured: false,
+              country: "FR",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            const ad4 = db.createAd({
+              user_id: user2.id,
+              ad_type: "offer",
+              route_from: "Berlín",
+              route_to: "Hamburgo",
+              start_date: "2026-03-22",
+              end_date: "2026-03-22",
+              start_time: "10:00",
+              end_time: "15:30",
+              price: 720.00,
+              expenses_by: "receiver",
+              bus_count: 1,
+              bus_age: 1,
+              seats: 48,
+              observations: "Autobús VIP con enchufes individuales y pantallas",
+              circuit: false,
+              status: "active",
+              featured: false,
+              country: "DE",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            // Crear relaciones de prueba
+            const follow1 = db.createAdFollower({
+              user_id: user2.id,
+              ad_id: ad1.id,
+              created_at: new Date().toISOString()
+            });
+
+            const interest1 = db.createAdInterest({
+              user_id: user2.id,
+              ad_id: ad1.id,
+              message: "Estamos interesados en esta ruta. ¿Podríamos negociar el precio?",
+              status: "pending",
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+
+            displayResult('createTestDataResult', 
+              `Datos de prueba creados exitosamente!\n\n` +
+              `Usuarios creados:\n- ${user1.username} (ID: ${user1.id})\n- ${user2.username} (ID: ${user2.id})\n- ${adminUser.username} (ID: ${adminUser.id})\n\n` +
+              `Anuncios creados:\n- ${ad1.route_from} → ${ad1.route_to} (ID: ${ad1.id})\n- ${ad2.route_from} → ${ad2.route_to} (ID: ${ad2.id})\n- ${ad3.route_from} → ${ad3.route_to} (ID: ${ad3.id})\n- ${ad4.route_from} → ${ad4.route_to} (ID: ${ad4.id})\n\n` +
+              `Relaciones creadas:\n- Seguimiento: ${follow1.user_id} sigue ${follow1.ad_id}\n- Interés: ${interest1.user_id} interesado en ${interest1.ad_id}`
+            );
+          } catch (error) {
+            displayResult('createTestDataResult', `Error creando datos de prueba: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('getAllUsersBtn').addEventListener('click', function() {
+          try {
+            const users = db.getUsers();
+            displayResult('queryResults', `Usuarios encontrados: ${users.length}\n\n${JSON.stringify(users, null, 2)}`);
+          } catch (error) {
+            displayResult('queryResults', `Error obteniendo usuarios: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('getAllAdsBtn').addEventListener('click', function() {
+          try {
+            const ads = db.getAds();
+            displayResult('queryResults', `Anuncios encontrados: ${ads.length}\n\n${JSON.stringify(ads, null, 2)}`);
+          } catch (error) {
+            displayResult('queryResults', `Error obteniendo anuncios: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('getActiveAdsBtn').addEventListener('click', function() {
+          try {
+            const ads = db.getActiveAds();
+            displayResult('queryResults', `Anuncios activos encontrados: ${ads.length}\n\n${JSON.stringify(ads, null, 2)}`);
+          } catch (error) {
+            displayResult('queryResults', `Error obteniendo anuncios activos: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('getUserByIdBtn').addEventListener('click', function() {
+          try {
+            const userId = document.getElementById('userIdInput').value.trim();
+            if (!userId) {
+              displayResult('crudResults', 'Por favor ingrese un ID de usuario', true);
+              return;
+            }
+            
+            const user = db.getUserById(userId);
+            if (user) {
+              displayResult('crudResults', `Usuario encontrado:\n${JSON.stringify(user, null, 2)}`);
+            } else {
+              displayResult('crudResults', 'Usuario no encontrado', true);
+            }
+          } catch (error) {
+            displayResult('crudResults', `Error buscando usuario: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('getAdByIdBtn').addEventListener('click', function() {
+          try {
+            const adId = document.getElementById('adIdInput').value.trim();
+            if (!adId) {
+              displayResult('crudResults', 'Por favor ingrese un ID de anuncio', true);
+              return;
+            }
+            
+            const ad = db.getAdById(adId);
+            if (ad) {
+              displayResult('crudResults', `Anuncio encontrado:\n${JSON.stringify(ad, null, 2)}`);
+            } else {
+              displayResult('crudResults', 'Anuncio no encontrado', true);
+            }
+          } catch (error) {
+            displayResult('crudResults', `Error buscando anuncio: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('updateAdBtn').addEventListener('click', function() {
+          try {
+            const adId = document.getElementById('adIdToUpdate').value.trim();
+            const field = document.getElementById('fieldToUpdate').value.trim();
+            const newValue = document.getElementById('newValue').value.trim();
+            
+            if (!adId || !field || !newValue) {
+              displayResult('adminResults', 'Por favor complete todos los campos', true);
+              return;
+            }
+            
+            // Convertir el nuevo valor al tipo apropiado
+            let processedValue = newValue;
+            if (field === 'price' || field === 'bus_count' || field === 'bus_age' || field === 'seats') {
+              processedValue = parseFloat(newValue);
+            } else if (field === 'circuit') {
+              processedValue = newValue.toLowerCase() === 'true';
+            }
+            
+            const updateData = {};
+            updateData[field] = processedValue;
+            
+            const updatedAd = db.updateAd(adId, updateData);
+            if (updatedAd) {
+              displayResult('adminResults', `Anuncio actualizado exitosamente:\n${JSON.stringify(updatedAd, null, 2)}`);
+            } else {
+              displayResult('adminResults', 'No se pudo actualizar el anuncio. Verifique el ID.', true);
+            }
+          } catch (error) {
+            displayResult('adminResults', `Error actualizando anuncio: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('updateUserRoleBtn').addEventListener('click', function() {
+          try {
+            const userId = document.getElementById('userIdToBlock').value.trim();
+            const newRole = document.getElementById('newRole').value.trim();
+            
+            if (!userId || !newRole) {
+              displayResult('adminResults', 'Por favor complete ambos campos', true);
+              return;
+            }
+            
+            if (newRole !== 'user' && newRole !== 'admin') {
+              displayResult('adminResults', 'El rol debe ser "user" o "admin"', true);
+              return;
+            }
+            
+            const updateData = { role: newRole };
+            const updatedUser = db.updateUser(userId, updateData);
+            if (updatedUser) {
+              displayResult('adminResults', `Rol de usuario actualizado exitosamente:\n${JSON.stringify(updatedUser, null, 2)}`);
+            } else {
+              displayResult('adminResults', 'No se pudo actualizar el rol del usuario. Verifique el ID.', true);
+            }
+          } catch (error) {
+            displayResult('adminResults', `Error actualizando rol de usuario: ${error.message}`, true);
+          }
+        });
+
+        document.getElementById('clearAllDataBtn').addEventListener('click', function() {
+          if (confirm('¿Está seguro de que desea eliminar TODOS los datos? Esta acción no se puede deshacer.')) {
+            try {
+              db.clearAllData();
+              displayResult('clearResults', '¡Todos los datos han sido eliminados!', true);
+            } catch (error) {
+              displayResult('clearResults', `Error limpiando datos: ${error.message}`, true);
+            }
+          }
+        });
+
+        // Mostrar estado inicial
+        window.addEventListener('load', function() {
+          displayResult('createTestDataResult', 'Haga clic en "Crear Usuarios y Anuncios de Prueba" para comenzar las pruebas.');
+        });
+    </script>
+</body>
+</html>
