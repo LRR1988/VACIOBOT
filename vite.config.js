@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+<<<<<<< HEAD
 import { resolve } from 'path';
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +14,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+<<<<<<< HEAD
     assetsDir: 'assets',
     rollupOptions: {
       input: {
@@ -21,6 +25,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
+=======
+    assetsDir: 'assets'
+  },
+  resolve: {
+    alias: {
+      '@': '/src'
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     }
   }
 });

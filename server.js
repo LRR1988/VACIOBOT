@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Servidor simple para servir la aplicación Travabus (compilada)
 require('dotenv').config(); // Cargar variables de entorno
 const express = require('express');
@@ -167,7 +168,7 @@ app.get('/api/payment-status/:sessionId', async (req, res) => {
 // Endpoint para webhook de Stripe
 app.post('/webhook', express.raw({ type: 'application/json' }), async (request, response) => {
   const sig = request.headers['stripe-signature'];
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_f536e102447acc97105cb8450cc6d3b1fe8d9fa42e568fd792cd92a9c1f173bc';
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || 'your_stripe_webhook_secret';
 
   let event;
 
@@ -285,11 +286,60 @@ app.get(/^\/(?!assets|api|static)/, (req, res) => {
       res.send(data);
     }
   });
+=======
+// Servidor simple para servir la aplicación Travabus
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
+// Servir archivos estáticos desde la carpeta pública
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Servir archivos estáticos desde la carpeta src también
+app.use(express.static(path.join(__dirname, 'src')));
+
+// Servir el archivo HTML de prueba
+app.get('/test', (req, res) => {
+  res.sendFile(path.join(__dirname, 'test_database.html'));
+});
+
+// Ruta principal
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>Travabus - Plataforma de Transporte</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 40px; }
+          .nav { margin-bottom: 20px; }
+          .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+          .nav a:hover { text-decoration: underline; }
+        </style>
+      </head>
+      <body>
+        <h1>Bienvenido a Travabus</h1>
+        <div class="nav">
+          <a href="/">Inicio</a>
+          <a href="/test">Pruebas de Base de Datos</a>
+          <a href="/src">Código Fuente</a>
+        </div>
+        <p>Aplicación para conectar empresas de autobuses con rutas vacías a empresas que necesitan transporte.</p>
+        <p><a href="/test">Ir a pruebas de base de datos</a></p>
+      </body>
+    </html>
+  `);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 });
 
 // Iniciar el servidor
 app.listen(PORT, '0.0.0.0', () => {
+<<<<<<< HEAD
   console.log(`Servidor Travabus escuchando en http://0.0.0.0:${PORT}`);
   console.log(`Ruta de pruebas: http://0.0.0.0:${PORT}/test`);
   console.log(`Webhook de Stripe disponible en: http://0.0.0.0:${PORT}/webhook`);
+=======
+  console.log(`Servidor Travabus escuchando en http://localhost:${PORT}`);
+  console.log(`Ruta de pruebas disponible en: http://localhost:${PORT}/test`);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 });

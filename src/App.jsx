@@ -11,8 +11,11 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Publish from './components/Publish';
 import Dashboard from './components/Dashboard';
+<<<<<<< HEAD
 import PaymentManager from './components/PaymentManager';
 import AllAds from './pages/AllAds';
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 import AuthModal from './components/AuthModal';
 import Notifications from './components/Notifications';
 import AdminPanel from './components/AdminPanel';
@@ -118,10 +121,13 @@ const App = () => {
             <Route path="/stripe-config" element={
               isAuthenticated && isAdmin(currentUser) ? <StripeIntegration /> : <Navigate to="/login" />
             } />
+<<<<<<< HEAD
             <Route path="/payments" element={
               isAuthenticated ? <PaymentManager /> : <Navigate to="/login" />
             } />
             <Route path="/all-ads" element={<AllAds />} />
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
           </Routes>
         </main>
         

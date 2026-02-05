@@ -68,6 +68,10 @@ function createTestData() {
     start_time: "08:00",
     end_time: "14:00",
     price: 1200.00,
+<<<<<<< HEAD
+=======
+    expenses_by: "receiver",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     bus_count: 1,
     bus_age: 2,
     seats: 50,
@@ -90,6 +94,10 @@ function createTestData() {
     start_time: "07:30",
     end_time: "16:30",
     price: 950.00,
+<<<<<<< HEAD
+=======
+    expenses_by: "shared",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     bus_count: 1,
     bus_age: 5,
     seats: 45,
@@ -113,6 +121,10 @@ function createTestData() {
     start_time: "09:00",
     end_time: "13:00",
     price: 650.00,
+<<<<<<< HEAD
+=======
+    expenses_by: "sender",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     bus_count: 1,
     bus_age: 3,
     seats: 55,
@@ -135,6 +147,10 @@ function createTestData() {
     start_time: "10:00",
     end_time: "15:30",
     price: 720.00,
+<<<<<<< HEAD
+=======
+    expenses_by: "receiver",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     bus_count: 1,
     bus_age: 1,
     seats: 48,

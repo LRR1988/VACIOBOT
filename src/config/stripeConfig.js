@@ -2,7 +2,7 @@
 // Este archivo establece la clave pública de Stripe si no está ya configurada
 
 // Clave pública de Stripe
-const DEFAULT_STRIPE_PUBLISHABLE_KEY = 'pk_test_51S95M9I567TRM2KW04qCZLh6w65hzKvL6GOdjqjSh3a946sX50PMvNkJC29fms6p1ZUk2zoT7T0zSwFdyyjnjNah00X6iMaecC';
+const DEFAULT_STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key';
 
 // Verificar si la clave ya está configurada
 const currentKey = localStorage.getItem('stripe_publishable_key');

@@ -116,7 +116,7 @@ app.post('/webhook', express.raw({ type: '*/*' }), async (request, response) => 
             logDatabaseError('TRANSACTION_INSERT', error, { userId, adId, amount, stripeSessionId: session.id });
           } else {
             console.log('✓ Transacción registrada exitosamente en Supabase:', data);
-            logTransactionCreated(data[0]?.id || 'unknown', userId, adId, 'completed', session.id);
+            logTransactionCreated((data && data[0]) ? (data[0].id || 'unknown') : 'unknown', userId, adId, 'completed', session.id);
             logPaymentSuccess(userId, adId, session.id, session.id, amount);
           }
         }

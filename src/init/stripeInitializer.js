@@ -2,7 +2,7 @@
 // Este archivo se ejecuta antes que cualquier otro componente
 
 // Verificar si la clave pública de Stripe ya está configurada en localStorage
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_51S95M9I567TRM2KW04qCZLh6w65hzKvL6GOdjqjSh3a946sX50PMvNkJC29fms6p1ZUk2zoT7T0zSwFdyyjnjNah00X6iMaecC';
+const STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key';
 
 // Asegurarse de que la clave pública esté disponible
 if (typeof window !== 'undefined') {

@@ -5,6 +5,7 @@ class StripeService {
   constructor() {
     this.stripe = null;
     this.publishableKey = localStorage.getItem('stripe_publishable_key');
+<<<<<<< HEAD
     this.initializeStripe(); // Llamada asíncrona, pero no podemos usar await en el constructor
   }
 
@@ -17,6 +18,17 @@ class StripeService {
     } catch (error) {
       console.error('Error inicializando Stripe con wrapper seguro:', error);
       this.stripe = null;
+=======
+    this.initializeStripe();
+  }
+
+  initializeStripe() {
+    // En un entorno real, cargaríamos Stripe.js
+    // Por ahora, simulamos la funcionalidad
+    if (this.publishableKey) {
+      // En una implementación real: this.stripe = window.Stripe(this.publishableKey);
+      console.log('Stripe inicializado con clave:', this.publishableKey);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     }
   }
 
@@ -33,11 +45,18 @@ class StripeService {
   // Crear un pago
   async createPayment(amount, currency = 'eur', description = '') {
     try {
+<<<<<<< HEAD
+=======
+      // En una implementación real, esto llamaría a la API de Stripe
+      // Por ahora, simulamos la creación de un pago
+      
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
       // Validar monto (mínimo 0.50€ para Stripe)
       if (amount < 0.5) {
         throw new Error('El monto mínimo para pagos es 0.50€');
       }
 
+<<<<<<< HEAD
       // Si Stripe está inicializado, usar la API real
       if (this.stripe) {
         // En una implementación completa, esto crearía un PaymentIntent
@@ -63,6 +82,18 @@ class StripeService {
 
         return { success: true, paymentIntent };
       }
+=======
+      // Simular respuesta de Stripe
+      const paymentIntent = {
+        id: `pi_${Math.random().toString(36).substr(2, 9)}`,
+        amount: Math.round(amount * 100), // Convertir a centavos
+        currency: currency,
+        status: 'requires_confirmation',
+        description: description
+      };
+
+      return { success: true, paymentIntent };
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     } catch (error) {
       return { success: false, error: error.message };
     }
@@ -111,6 +142,7 @@ class StripeService {
   // Confirmar un pago
   async confirmPayment(paymentIntentId, paymentMethodId) {
     try {
+<<<<<<< HEAD
       // Si Stripe está inicializado, usar la API real
       if (this.stripe) {
         // En una implementación completa, esto confirmaría un PaymentIntent
@@ -136,6 +168,24 @@ class StripeService {
         
         return confirmationResult;
       }
+=======
+      // En una implementación real, se llamaría a stripe.confirmPayment()
+      // Por ahora, simulamos la confirmación
+      
+      // Simular respuesta de confirmación
+      const confirmationResult = {
+        paymentIntent: {
+          id: paymentIntentId,
+          status: 'succeeded'
+        },
+        error: null
+      };
+
+      // Actualizar estado de la transacción en la base de datos
+      // Esto se haría a través de nuestra base de datos local
+      
+      return confirmationResult;
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     } catch (error) {
       return {
         paymentIntent: null,
@@ -193,6 +243,7 @@ export const initializeStripe = (publishableKey) => {
   stripeService.setKeys(publishableKey, '');
 };
 
+<<<<<<< HEAD
 // Función para esperar que Stripe esté completamente inicializado
 export const waitForStripeReady = async () => {
   // Esperar un poco para que Stripe se inicialice
@@ -211,12 +262,19 @@ export const waitForStripeReady = async () => {
 // Función para procesar comisiones
 export const processCommissionPayment = async (amount, userId, adId) => {
   await waitForStripeReady();
+=======
+// Función para procesar comisiones
+export const processCommissionPayment = async (amount, userId, adId) => {
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   return stripeService.processCommission(amount, userId, adId);
 };
 
 // Función para crear un pago
 export const createStripePayment = async (amount, currency, description) => {
+<<<<<<< HEAD
   await waitForStripeReady();
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   return stripeService.createPayment(amount, currency, description);
 };
 

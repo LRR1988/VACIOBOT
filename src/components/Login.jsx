@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { signIn } from '../utils/database';
+=======
+import { signIn } from '../utils/supabaseClient';
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 
 const Login = () => {
   const { t } = useTranslation();

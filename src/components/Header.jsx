@@ -29,7 +29,10 @@ const Header = ({
           
           <div className="nav-links">
             <Link to="/" className="nav-link">{t('navigation.home')}</Link>
+<<<<<<< HEAD
             <Link to="/all-ads" className="nav-link">Ver Anuncios</Link>
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
             <Link to="/about" className="nav-link">{t('navigation.about')}</Link>
             <Link to="/how-it-works" className="nav-link">{t('navigation.how_it_works')}</Link>
             <Link to="/contact" className="nav-link">{t('navigation.contact')}</Link>
@@ -38,6 +41,10 @@ const Header = ({
               <>
                 <Link to="/profile" className="nav-link">{t('navigation.my_profile')}</Link>
                 <Link to="/publish" className="nav-link">{t('navigation.publish_ad')}</Link>
+<<<<<<< HEAD
+=======
+                <Link to="/dashboard" className="nav-link">{t('common.dashboard')}</Link>
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
                 
                 {currentUser && isAdmin(currentUser) && (
                   <>

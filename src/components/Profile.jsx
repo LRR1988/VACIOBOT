@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 import { getUserProfile, updateUserProfile } from '../utils/database';
 
 const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+=======
+import { getUserProfile, updateUserProfile } from '../utils/supabaseClient';
+
+const Profile = () => {
+  const { t } = useTranslation();
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   const [userData, setUserData] = useState({
     tax_data: '',
     bank_account: '',
@@ -121,6 +128,7 @@ const Profile = () => {
               </div>
             )}
             
+<<<<<<< HEAD
             <div className="card-body">
               <div className="profile-nav">
                 <button type="button" className="nav-link" onClick={() => navigate('/dashboard')}>{t('common.dashboard')}</button>
@@ -128,6 +136,8 @@ const Profile = () => {
               </div>
             </div>
             
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="company_name" className="form-label">

@@ -29,8 +29,12 @@
     "interested": "I'm interested",
     "not_interested": "Not interested",
     "clone": "Clone",
+<<<<<<< HEAD
     "more_info": "More info",
     "all_countries": "All countries"
+=======
+    "more_info": "More info"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "navigation": {
     "home": "Home",
@@ -43,10 +47,14 @@
     "followed_ads": "Followed ads",
     "interested_ads": "Interested in",
     "sent_offers": "Sent offers",
+<<<<<<< HEAD
     "received_offers": "Received offers",
     "ratings": "Ratings",
     "notifications": "Notifications",
     "payments": "Payments"
+=======
+    "received_offers": "Received offers"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "auth": {
     "username": "Username",
@@ -76,7 +84,10 @@
     "start_time": "Start time",
     "end_time": "End time",
     "price": "Price",
+<<<<<<< HEAD
     "price_includes": "Price, taxes and other expenses included",
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "expenses_by": "Expenses covered by",
     "bus_count": "Number of buses",
     "bus_age": "Years of age",
@@ -169,6 +180,7 @@
     "manage_ads": "Manage ads",
     "random_ads": "Publish random ads",
     "mark_featured": "Mark as featured"
+<<<<<<< HEAD
   },
   "payments": {
     "title": "Payments",
@@ -213,5 +225,7 @@
     "platform_fee": "Platform Fee",
     "net_to_owner": "Net to Owner",
     "explanation": "5% of price, minimum 25€"
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   }
 }

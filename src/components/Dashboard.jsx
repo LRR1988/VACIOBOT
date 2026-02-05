@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 import { getUserAds, updateAd, deleteAd, getUserFollowingAds, unfollowAd } from '../utils/database';
 import { supabase } from '../utils/supabaseClient';
@@ -14,6 +15,15 @@ const Dashboard = () => {
   const [myAds, setMyAds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingAd, setEditingAd] = useState(null);
+=======
+import { getUserAds } from '../utils/supabaseClient';
+
+const Dashboard = () => {
+  const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState('my-ads');
+  const [myAds, setMyAds] = useState([]);
+  const [loading, setLoading] = useState(true);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 
   useEffect(() => {
     loadUserAds();
@@ -37,6 +47,7 @@ const Dashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleEditAd = (ad) => {
     // Mostrar mensaje si intentan editar el precio
     if (window.confirm(`¿Editar anuncio?\n\nNota: El precio no se puede modificar después de crear el anuncio. Si necesita cambiar el precio, debe eliminar este anuncio y crear uno nuevo.`)) {
@@ -90,11 +101,29 @@ const Dashboard = () => {
         return userId ? <NotificationsSection userId={userId} /> : <div>Debe iniciar sesión</div>;
       default:
         return <MyAdsSection ads={myAds} loading={loading} handleEditAd={handleEditAd} handleDeleteAd={handleDeleteAd} />;
+=======
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'my-ads':
+        return <MyAdsSection ads={myAds} loading={loading} />;
+      case 'followed':
+        return <FollowedAdsSection />;
+      case 'interested':
+        return <InterestedAdsSection />;
+      case 'offers':
+        return <OffersSection />;
+      default:
+        return <MyAdsSection ads={myAds} loading={loading} />;
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     }
   };
 
   return (
+<<<<<<< HEAD
     <div>
+=======
+    <div className="container">
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
       <div className="card">
         <div className="card-header">
           <h2 className="card-title">{t('common.dashboard')}</h2>
@@ -114,23 +143,36 @@ const Dashboard = () => {
             {t('navigation.followed_ads')}
           </button>
           <button
+<<<<<<< HEAD
+=======
+            className={`tab-btn ${activeTab === 'interested' ? 'active' : ''}`}
+            onClick={() => setActiveTab('interested')}
+          >
+            {t('navigation.interested_ads')}
+          </button>
+          <button
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
             className={`tab-btn ${activeTab === 'offers' ? 'active' : ''}`}
             onClick={() => setActiveTab('offers')}
           >
             {t('navigation.sent_offers')}
           </button>
+<<<<<<< HEAD
           <button
             className={`tab-btn ${activeTab === 'notifications' ? 'active' : ''}`}
             onClick={() => setActiveTab('notifications')}
           >
             {t('navigation.notifications')}
           </button>
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
         </div>
         
         <div className="tab-content">
           {renderContent()}
         </div>
       </div>
+<<<<<<< HEAD
       
       {editingAd && (
         <EditAdModal
@@ -140,12 +182,18 @@ const Dashboard = () => {
           onSave={handleSaveEdit}
         />
       )}
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     </div>
   );
 };
 
 // Subcomponente para anuncios propios
+<<<<<<< HEAD
 const MyAdsSection = ({ ads, loading, handleEditAd, handleDeleteAd }) => {
+=======
+const MyAdsSection = ({ ads, loading }) => {
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   const { t } = useTranslation();
 
   if (loading) {
@@ -177,6 +225,7 @@ const MyAdsSection = ({ ads, loading, handleEditAd, handleDeleteAd }) => {
               <strong>{t('ad_details.status')}:</strong> <span className={`status ${ad.status}`}>{ad.status}</span>
             </p>
             <div className="d-flex gap-2">
+<<<<<<< HEAD
               <button 
                 className="btn btn-outline"
                 onClick={() => handleEditAd(ad)}
@@ -189,6 +238,11 @@ const MyAdsSection = ({ ads, loading, handleEditAd, handleDeleteAd }) => {
               >
                 {t('common.delete')}
               </button>
+=======
+              <button className="btn btn-outline">{t('common.edit')}</button>
+              <button className="btn btn-danger">{t('common.delete')}</button>
+              <button className="btn btn-primary">{t('common.clone')}</button>
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
             </div>
           </div>
         </div>
@@ -200,6 +254,7 @@ const MyAdsSection = ({ ads, loading, handleEditAd, handleDeleteAd }) => {
 // Subcomponente para anuncios seguidos
 const FollowedAdsSection = () => {
   const { t } = useTranslation();
+<<<<<<< HEAD
   const [followedAds, setFollowedAds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
@@ -324,6 +379,21 @@ const FollowedAdsSection = () => {
           </div>
         </div>
       ))}
+=======
+  return (
+    <div className="text-center">
+      <p>{t('common.no_items_found')}</p>
+    </div>
+  );
+};
+
+// Subcomponente para anuncios en los que se está interesado
+const InterestedAdsSection = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="text-center">
+      <p>{t('common.no_items_found')}</p>
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     </div>
   );
 };
@@ -338,6 +408,7 @@ const OffersSection = () => {
   );
 };
 
+<<<<<<< HEAD
 // Subcomponente para calificaciones
 const RatingSection = ({ userId }) => {
   const { t } = useTranslation();
@@ -370,4 +441,6 @@ const NotificationsSection = ({ userId }) => {
   );
 };
 
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 export default Dashboard;

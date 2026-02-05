@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { signIn, signUp } from '../utils/database';
+=======
+import { signIn, signUp } from '../utils/supabaseClient';
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 
 const AuthModal = ({ onClose, onLogin }) => {
   const { t } = useTranslation();
@@ -42,6 +46,7 @@ const AuthModal = ({ onClose, onLogin }) => {
           return;
         }
 
+<<<<<<< HEAD
         // Preparar los datos del usuario para enviar a la función signUp
         const userData = {
           username: formData.username,
@@ -49,6 +54,9 @@ const AuthModal = ({ onClose, onLogin }) => {
         };
         
         const { user, error } = await signUp(userData);
+=======
+        const { user, error } = await signUp(formData.username, formData.password);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
         if (error) {
           setError(error.message);
         } else {

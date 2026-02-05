@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { signUp } from '../utils/database';
+=======
+import { signUp } from '../utils/supabaseClient';
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
 
 const Register = () => {
   const { t } = useTranslation();
@@ -33,6 +37,7 @@ const Register = () => {
     }
 
     try {
+<<<<<<< HEAD
       // Preparar los datos del usuario para enviar a la función signUp
       const userData = {
         username: formData.username,
@@ -40,6 +45,9 @@ const Register = () => {
       };
       
       const { user, error } = await signUp(userData);
+=======
+      const { user, error } = await signUp(formData.username, formData.password);
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
       if (error) {
         setError(error.message);
       } else {

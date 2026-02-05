@@ -29,8 +29,12 @@
     "interested": "Estoy interesado",
     "not_interested": "No estoy interesado",
     "clone": "Clonar",
+<<<<<<< HEAD
     "more_info": "Más información",
     "all_countries": "Todos los países"
+=======
+    "more_info": "Más información"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "navigation": {
     "home": "Inicio",
@@ -43,10 +47,14 @@
     "followed_ads": "Anuncios seguidos",
     "interested_ads": "Interesado en",
     "sent_offers": "Ofertas enviadas",
+<<<<<<< HEAD
     "received_offers": "Ofertas recibidas",
     "ratings": "Calificaciones",
     "notifications": "Notificaciones",
     "payments": "Pagos"
+=======
+    "received_offers": "Ofertas recibidas"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "auth": {
     "username": "Nombre de usuario",
@@ -76,7 +84,10 @@
     "start_time": "Hora inicio",
     "end_time": "Hora fin",
     "price": "Precio",
+<<<<<<< HEAD
     "price_includes": "Precio, impuestos y otros gastos incluidos",
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "expenses_by": "Gastos cubiertos por",
     "bus_count": "Número de autobuses",
     "bus_age": "Años de antigüedad",
@@ -169,6 +180,7 @@
     "manage_ads": "Gestionar anuncios",
     "random_ads": "Publicar anuncios aleatorios",
     "mark_featured": "Marcar como destacado"
+<<<<<<< HEAD
   },
   "payments": {
     "title": "Pagos",
@@ -213,5 +225,7 @@
     "platform_fee": "Tarifa de Plataforma",
     "net_to_owner": "Neto para el Propietario",
     "explanation": "5% del precio, mínimo 25€"
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   }
 }

@@ -29,8 +29,12 @@
     "interested": "Je suis intéressé",
     "not_interested": "Pas intéressé",
     "clone": "Cloner",
+<<<<<<< HEAD
     "more_info": "Plus d'infos",
     "all_countries": "Tous les pays"
+=======
+    "more_info": "Plus d'informations"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "navigation": {
     "home": "Accueil",
@@ -43,10 +47,14 @@
     "followed_ads": "Annonces suivies",
     "interested_ads": "Intéressé par",
     "sent_offers": "Offres envoyées",
+<<<<<<< HEAD
     "received_offers": "Offres reçues",
     "ratings": "Évaluations",
     "notifications": "Notifications",
     "payments": "Paiements"
+=======
+    "received_offers": "Offres reçues"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "auth": {
     "username": "Nom d'utilisateur",
@@ -76,6 +84,7 @@
     "start_time": "Heure de début",
     "end_time": "Heure de fin",
     "price": "Prix",
+<<<<<<< HEAD
     "price_includes": "Prix, taxes et autres frais inclus",
     "expenses_by": "Frais couverts par",
     "bus_count": "Nombre de bus",
@@ -83,13 +92,25 @@
     "seats": "Nombre de places",
     "observations": "Observations",
     "circuit": "C'est un circuit",
+=======
+    "expenses_by": "Frais couverts par",
+    "bus_count": "Nombre de bus",
+    "bus_age": "Âge en années",
+    "seats": "Nombre de places",
+    "observations": "Observations",
+    "circuit": "Est un circuit",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "required_field": "Champ requis",
     "invalid_date": "Date invalide",
     "invalid_time": "Heure invalide",
     "invalid_number": "Numéro invalide"
   },
   "ad_details": {
+<<<<<<< HEAD
     "route": "Trajet",
+=======
+    "route": "Itinéraire",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "dates": "Dates",
     "times": "Horaires",
     "price": "Prix",
@@ -107,7 +128,11 @@
     "bic_swift": "BIC/SWIFT",
     "documents": "Documents",
     "ownership_certificate": "Certificat de propriété réelle",
+<<<<<<< HEAD
     "company_id": "SIRET de l'entreprise",
+=======
+    "company_id": "ID entreprise (CIF)",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "upload_documents": "Télécharger des documents",
     "my_ads": "Mes annonces",
     "followed_ads": "Annonces suivies",
@@ -134,18 +159,30 @@
     "offer_accepted": "Offre acceptée",
     "offer_rejected": "Offre rejetée",
     "payment_required": "Paiement requis pour continuer",
+<<<<<<< HEAD
     "transfer_completed": "Transfert terminé",
     "admin_notification": "Notification admin"
   },
   "home": {
     "subtitle": "Connecter les trajets, optimiser les voyages",
+=======
+    "transfer_completed": "Virement complété",
+    "admin_notification": "Notification admin"
+  },
+  "home": {
+    "subtitle": "Relier les trajets, optimiser les voyages",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "description": "Plateforme pour connecter les entreprises de bus avec des trajets vides et les entreprises qui ont besoin de transport",
     "cards": {
       "publish_routes": "Publier des trajets",
       "connect": "Connecter",
       "save": "Économiser"
     },
+<<<<<<< HEAD
     "cta": "Commencez maintenant",
+=======
+    "cta": "Commencer maintenant",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "featured_ads": "Annonces en vedette",
     "recent_ads": "Annonces récentes"
   },
@@ -156,9 +193,15 @@
     "step2": "Publiez votre annonce",
     "step2_desc": "Publiez des offres de bus vides ou recherchez des bus selon vos besoins",
     "step3": "Connectez-vous avec d'autres utilisateurs",
+<<<<<<< HEAD
     "step3_desc": "Suivez des annonces ou montrez-y de l'intérêt",
     "step4": "Gérez la transaction",
     "step4_desc": "Utilisez notre système sécurisé pour terminer la transaction",
+=======
+    "step3_desc": "Suivez les annonces ou montrez-y de l'intérêt",
+    "step4": "Gérez la transaction",
+    "step4_desc": "Utilisez notre système sécurisé pour finaliser la transaction",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "commission_info": "Nous facturons une commission de 5% (minimum 25€) à l'utilisateur qui reçoit l'argent pour le service"
   },
   "admin": {
@@ -169,6 +212,7 @@
     "manage_ads": "Gérer les annonces",
     "random_ads": "Publier des annonces aléatoires",
     "mark_featured": "Marquer comme vedette"
+<<<<<<< HEAD
   },
   "payments": {
     "title": "Paiements",
@@ -213,5 +257,7 @@
     "platform_fee": "Frais de plateforme",
     "net_to_owner": "Net au propriétaire",
     "explanation": "5% du prix, minimum 25€"
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   }
 }

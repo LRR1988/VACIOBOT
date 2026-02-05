@@ -203,7 +203,7 @@ app.get('/api/payment-status/:sessionId', async (req, res) => {
 // Endpoint para webhook de Stripe
 app.post('/webhook', express.raw({ type: 'application/json' }), async (request, response) => {
   const sig = request.headers['stripe-signature'];
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_f536e102447acc97105cb8450cc6d3b1fe8d9fa42e568fd792cd92a9c1f173bc';
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || 'your_stripe_webhook_secret';
 
   let event;
 

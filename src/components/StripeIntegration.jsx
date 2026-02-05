@@ -122,7 +122,11 @@ const StripeIntegration = () => {
                   id="publishableKey"
                   name="publishableKey"
                   className="form-input"
+<<<<<<< HEAD
                   placeholder="pk_..."
+=======
+                  placeholder="pk_..."
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
                   required
                 />
               </div>
@@ -135,7 +139,11 @@ const StripeIntegration = () => {
                   id="secretKey"
                   name="secretKey"
                   className="form-input"
+<<<<<<< HEAD
                   placeholder="sk_..."
+=======
+                  placeholder="your_stripe_secret_key"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
                   required
                 />
               </div>

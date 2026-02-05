@@ -4,13 +4,13 @@
  * Esta información es importante para la configuración del sistema de pagos.
  * 
  * Clave Pública (Publishable Key):
- * pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * your_stripe_publishable_key
  * 
  * Clave Secreta (Secret Key):
- * sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * your_stripe_secret_key
  * 
  * Webhook Signing Secret:
- * whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * your_stripe_webhook_secret
  * 
  * Nota: 
  * - La clave pública es segura de almacenar en el frontend
@@ -20,10 +20,10 @@
 
 // Información de configuración de Stripe (con valores de ejemplo)
 const stripeConfig = {
-  publishableKey: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  secretKey: 'sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  publishableKey: 'your_stripe_publishable_key',
+  secretKey: 'your_stripe_secret_key',
   webhookEndpoint: 'http://13.51.166.237:3000/webhook',
-  webhookSecret: 'whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  webhookSecret: 'your_stripe_webhook_secret'
 };
 
 console.log('🔐 Claves de Stripe para Travabus (ejemplo)');

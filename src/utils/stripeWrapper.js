@@ -5,7 +5,7 @@ let stripeInstance = null;
 let stripeLoadingPromise = null;
 
 // Clave pública predeterminada
-const DEFAULT_STRIPE_PUBLISHABLE_KEY = 'pk_test_51S95M9I567TRM2KW04qCZLh6w65hzKvL6GOdjqjSh3a946sX50PMvNkJC29fms6p1ZUk2zoT7T0zSwFdyyjnjNah00X6iMaecC';
+const DEFAULT_STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key';
 
 // Función para obtener la clave pública de Stripe
 const getStripePublishableKey = () => {

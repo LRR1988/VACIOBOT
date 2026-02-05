@@ -1,6 +1,10 @@
 {
   "common": {
+<<<<<<< HEAD
     "welcome": "Benvenuto in Travabus",
+=======
+    "welcome": "Benvenuto su Travabus",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "login": "Accedi",
     "register": "Registrati",
     "logout": "Esci",
@@ -15,7 +19,11 @@
     "confirm": "Conferma",
     "search": "Cerca",
     "filter": "Filtra",
+<<<<<<< HEAD
     "reset": "Reimposta",
+=======
+    "reset": "Ripristina",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "loading": "Caricamento...",
     "error": "Errore",
     "success": "Successo",
@@ -23,6 +31,7 @@
     "settings": "Impostazioni",
     "profile": "Profilo",
     "publish": "Pubblica",
+<<<<<<< HEAD
     "dashboard": "Dashboard",
     "follow": "Segui",
     "unfollow": "Smetti di seguire",
@@ -31,6 +40,15 @@
     "clone": "Clona",
     "more_info": "Maggiori informazioni",
     "all_countries": "Tutti i paesi"
+=======
+    "dashboard": "Pannello",
+    "follow": "Segui",
+    "unfollow": "Non seguire più",
+    "interested": "Sono interessato",
+    "not_interested": "Non interessato",
+    "clone": "Clona",
+    "more_info": "Maggiori informazioni"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "navigation": {
     "home": "Home",
@@ -43,16 +61,24 @@
     "followed_ads": "Annunci seguiti",
     "interested_ads": "Interessato a",
     "sent_offers": "Offerte inviate",
+<<<<<<< HEAD
     "received_offers": "Offerte ricevute",
     "ratings": "Valutazioni",
     "notifications": "Notifiche",
     "payments": "Pagamenti"
+=======
+    "received_offers": "Offerte ricevute"
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   },
   "auth": {
     "username": "Nome utente",
     "password": "Password",
     "confirm_password": "Conferma password",
+<<<<<<< HEAD
     "forgot_password": "Hai dimenticato la password?",
+=======
+    "forgot_password": "Password dimenticata?",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "create_account": "Crea account",
     "already_have_account": "Hai già un account?",
     "no_account": "Non hai un account?",
@@ -62,8 +88,13 @@
     "password_mismatch": "Le password non corrispondono"
   },
   "ad_types": {
+<<<<<<< HEAD
     "offer": "Offerta di bus",
     "demand": "Richiesta di bus (prossimamente)",
+=======
+    "offer": "Offerta bus",
+    "demand": "Richiesta bus (prossimamente)",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "offer_description": "Offro un bus vuoto per un viaggio",
     "demand_description": "Ho bisogno di un bus per un viaggio (prossimamente)"
   },
@@ -76,9 +107,14 @@
     "start_time": "Ora inizio",
     "end_time": "Ora fine",
     "price": "Prezzo",
+<<<<<<< HEAD
     "price_includes": "Prezzo, tasse e altre spese incluse",
     "expenses_by": "Spese coperte da",
     "bus_count": "Numero di bus",
+=======
+    "expenses_by": "Spese coperte da",
+    "bus_count": "Numero di autobus",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "bus_age": "Anni di età",
     "seats": "Numero di posti",
     "observations": "Osservazioni",
@@ -106,8 +142,13 @@
     "bank_account": "Numero di conto bancario",
     "bic_swift": "BIC/SWIFT",
     "documents": "Documenti",
+<<<<<<< HEAD
     "ownership_certificate": "Certificato di proprietà effettiva",
     "company_id": "Partita IVA dell'azienda",
+=======
+    "ownership_certificate": "Certificato di proprietà reale",
+    "company_id": "Partita IVA (CIF)",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "upload_documents": "Carica documenti",
     "my_ads": "I miei annunci",
     "followed_ads": "Annunci seguiti",
@@ -134,12 +175,21 @@
     "offer_accepted": "Offerta accettata",
     "offer_rejected": "Offerta rifiutata",
     "payment_required": "Pagamento richiesto per continuare",
+<<<<<<< HEAD
     "transfer_completed": "Trasferimento completato",
     "admin_notification": "Notifica admin"
   },
   "home": {
     "subtitle": "Colleghiamo percorsi, ottimizziamo viaggi",
     "description": "Piattaforma per connettere aziende di autobus con percorsi vuoti e aziende che hanno bisogno di trasporto",
+=======
+    "transfer_completed": "Bonifico completato",
+    "admin_notification": "Notifica amministratore"
+  },
+  "home": {
+    "subtitle": "Collegare percorsi, ottimizzare viaggi",
+    "description": "Piattaforma per collegare aziende di autobus con percorsi vuoti e aziende che hanno bisogno di trasporto",
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
     "cards": {
       "publish_routes": "Pubblica Percorsi",
       "connect": "Connetti",
@@ -169,6 +219,7 @@
     "manage_ads": "Gestisci annunci",
     "random_ads": "Pubblica annunci casuali",
     "mark_featured": "Segna come in evidenza"
+<<<<<<< HEAD
   },
   "payments": {
     "title": "Pagamenti",
@@ -213,5 +264,7 @@
     "platform_fee": "Commissione piattaforma",
     "net_to_owner": "Netto al proprietario",
     "explanation": "5% del prezzo, minimo 25€"
+=======
+>>>>>>> f4f35af87693ca2d46f5347f103456e0c022af85
   }
 }
